@@ -70,12 +70,12 @@ const server = new ApolloServer({
     ],
 });
 await server.start();
-app.use('/graphql', cors({origin:'*'}), bodyParser.json(),
+app.use('/', cors({origin:'*'}), bodyParser.json(),
     expressMiddleware(server, {
         context: async ({req}) => ({req, pubsub})
     })
 );
 const PORT = process.env.PORT || 4000;
 httpServer.listen(PORT, () => {
-    console.log(`🚀 Server is now running on http://localhost:${PORT}/graphql`);
+    console.log(`🚀 Server is now running on http://localhost:${PORT}`);
 });
