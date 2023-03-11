@@ -10,7 +10,7 @@ const check = context => {
       const token = authHeader.split(' ')[1];
       if (token) {
         try {
-          const user = jwt.verify(token, process.env.SECRET_JWT_KEY);
+          const user = jwt.verify(token, secretjwtkey);
           return user;
         } catch (err) {
           throw new Error('Invalid/Expired token.');
