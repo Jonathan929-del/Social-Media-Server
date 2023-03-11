@@ -14,7 +14,7 @@ const generateToken = user => {
         id:user.id,
         email:user.email,
         username:user.username,
-    }, process.env.SECRET_JWT_KEY, {expiresIn:'1h'});
+    }, 'secretjwtkey', {expiresIn:'1h'});
 };
 
 
