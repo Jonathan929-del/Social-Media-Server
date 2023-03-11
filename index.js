@@ -75,6 +75,7 @@ app.use('/graphql', cors({origin:'*'}), bodyParser.json(),
         context: async ({req}) => ({req, pubsub})
     })
 );
-httpServer.listen(4000, () => {
-    console.log('🚀 Server is now running on http://localhost:4000/graphql');
+const PORT = process.env.PORT || 4000;
+httpServer.listen(PORT, () => {
+    console.log(`🚀 Server is now running on http://localhost:${PORT}/graphql`);
 });

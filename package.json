@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index",
-    "dev": "node index"
+    "dev": "node index",
+    "serve": "node index"
   },
   "author": "",
   "license": "ISC",
