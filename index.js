@@ -27,7 +27,7 @@ const pubsub = new PubSub();
 
 
 // Database connection
-const MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL = 'mongodb+srv://jonathanadel:jonathan123@graphql.ymiqzru.mongodb.net/graphql';
 mongoose.set('strictQuery', false);
 mongoose.connect(MONGO_URL).then(() => console.log("connected to DB.")).catch(err => console.log(err));
 
@@ -44,7 +44,7 @@ const schema = makeExecutableSchema({
 // Apollo server
 const wsServer = new WebSocketServer({
     server: httpServer,
-    path: '/',
+    path: '/graphql',
 });
 const serverCleanup = useServer(
     {
@@ -75,7 +75,45 @@ app.use('/', cors({origin:'*'}), bodyParser.json(),
         context: async ({req}) => ({req, pubsub})
     })
 );
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 httpServer.listen(PORT, () => {
     console.log(`🚀 Server is now running on http://localhost:${PORT}`);
 });
+
+
+
+
+
+
+
+// import { ApolloServer, PubSub } from 'apollo-server';
+// import mongoose from 'mongoose';
+
+// import typeDefs from './graphql/typeDefs';
+// import resolvers from './graphql/resolvers';
+// import dotenv from 'dotenv';
+
+// const pubsub = new PubSub();
+
+// const PORT = process.env.port || 5000;
+
+// const server = new ApolloServer({
+//   typeDefs,
+//   resolvers,
+//   context: ({ req }) => ({ req, pubsub })
+// });
+
+// const MONGODB = process.env.MONGO_URL
+
+// mongoose
+//   .connect(MONGODB, { useNewUrlParser: true })
+//   .then(() => {
+//     console.log('MongoDB Connected');
+//     return server.listen({ port: PORT });
+//   })
+//   .then((res) => {
+//     console.log(`Server running at ${res.url}`);
+//   })
+//   .catch(err => {
+//     console.error(err)
+//   })
