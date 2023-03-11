@@ -44,7 +44,7 @@ const schema = makeExecutableSchema({
 // Apollo server
 const wsServer = new WebSocketServer({
     server: httpServer,
-    path: '/graphql',
+    path: '/',
 });
 const serverCleanup = useServer(
     {
